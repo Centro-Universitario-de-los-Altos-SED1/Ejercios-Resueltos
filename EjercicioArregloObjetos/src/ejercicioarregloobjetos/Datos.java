@@ -13,6 +13,14 @@ public class Datos {
      Integer edad;
      String dirFoto;
 
+    public void setDirFoto(String dirFoto) {
+        this.dirFoto = dirFoto;
+    }
+
+    public String getDirFoto() {
+        return dirFoto;
+    }
+
     public Datos(String nombre, String Clase, Integer edad, String dirFoto) {
         this.nombre = nombre;
         this.Clase = Clase;

@@ -5,7 +5,10 @@
  */
 package ejercicioarregloobjetos;
 
+import java.awt.Image;
+import java.io.File;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,8 +19,8 @@ public class CapturaDatos extends javax.swing.JFrame {
      int contador=0;
      Datos arrayObjetos[]= new Datos[5];
      DefaultTableModel modelo;
-     
-     
+     JFileChooser explorador = new JFileChooser();
+     Imagenes ruta = new Imagenes();
     /**
      * Creates new form CapturaDatos
      */
@@ -27,6 +30,7 @@ public class CapturaDatos extends javax.swing.JFrame {
         modelo.addColumn("nombre");
         modelo.addColumn("Calse");
         modelo.addColumn("Edad");
+        modelo.addColumn("dirección de la foto");
         this.Tabla.setModel(modelo);
     }
 
@@ -49,6 +53,7 @@ public class CapturaDatos extends javax.swing.JFrame {
         Mostrar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
+        foto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,6 +108,8 @@ public class CapturaDatos extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(Tabla);
 
+        foto.setText("Foto");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -110,29 +117,33 @@ public class CapturaDatos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(29, 29, 29))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Clase, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                            .addComponent(Edad)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(foto))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(29, 29, 29))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Clase, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                                    .addComponent(Edad))))
-                        .addGap(62, 62, 62)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(107, 107, 107)))
+                        .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Mostrar)
-                            .addComponent(Guardar))))
-                .addContainerGap(226, Short.MAX_VALUE))
+                            .addComponent(Guardar)
+                            .addComponent(Mostrar))))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,26 +154,27 @@ public class CapturaDatos extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Guardar)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(foto)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Clase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Guardar)
+                        .addGap(36, 36, 36)
                         .addComponent(Mostrar)
-                        .addGap(32, 32, 32)))
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addGap(320, 320, 320))))
         );
 
         pack();
@@ -196,6 +208,7 @@ public class CapturaDatos extends javax.swing.JFrame {
         System.out.println("nombre"+arrayObjetos[i].getNombre());
         System.out.println("Clase"+arrayObjetos[i].getClase());
         System.out.println("Edad"+arrayObjetos[i].getEdad());
+        System.out.println("dirección de la foto"+arrayObjetos[i].dirFoto);
          System.out.println("    ");
       }
     
@@ -208,10 +221,13 @@ public class CapturaDatos extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(null, "Error ya no hay casillas disponobles");
         else{     
             arrayObjetos[contador]=new Datos (Nombre.getText(),Clase.getText(),Integer. parseInt (Edad.getText()),"");
-            String Arreglo[]= new String[3];
+            String Arreglo[]= new String[4];
             Arreglo[0]=arrayObjetos[contador].nombre;
             Arreglo[1]=arrayObjetos[contador].Clase;
             Arreglo[2]=String.valueOf(arrayObjetos[contador].edad);
+          
+            insertarfoto();
+            Arreglo[3]=arrayObjetos[contador].dirFoto;
             modelo.addRow(Arreglo);
             Nombre.setText("");
             Clase .setText("");
@@ -219,9 +235,24 @@ public class CapturaDatos extends javax.swing.JFrame {
             contador++;
     }
     
-    
-    
-    
+   
+    }
+     public void insertarfoto(){
+         if (contador>=5)
+             System.out.println("error ya no se puede ingresar imagenes");
+         else
+              explorador.addChoosableFileFilter(new FileNameExtensionFilter("Imagenes","jpg","png","gif"));//Indica los tipos de imagenes que admite
+            explorador.showOpenDialog(null);
+            
+            File auxFile=explorador.getSelectedFile(); 
+           arrayObjetos[contador].dirFoto =auxFile.getAbsolutePath();
+           
+        ImageIcon fot = new ImageIcon( arrayObjetos[contador].getDirFoto());//Creamos el icono y ponemos la direccion de nuestra imagen
+        Icon icono = new ImageIcon(fot.getImage().getScaledInstance(300,50,Image.SCALE_SMOOTH));//Para ajustar la imagen al label
+        foto.setIcon(icono);
+        
+         
+         
     }
     public static void main(String args[]) {
       
@@ -258,6 +289,7 @@ public class CapturaDatos extends javax.swing.JFrame {
     private javax.swing.JButton Mostrar;
     private javax.swing.JTextField Nombre;
     private javax.swing.JTable Tabla;
+    private javax.swing.JLabel foto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
